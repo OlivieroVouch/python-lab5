@@ -17,12 +17,20 @@
 </head>
 
 <body>
-<h1>Welcome to the Todo List Manager</h1>
-<p>Here you can see all existing tasks</p>
+      <h1>Welcome to the Todo List Manager</h1>
+      <p>Here you can see all existing tasks</p>
   <ul>
     {% for t in result %}
-        <li>{{ t[1] }}</li>
+        <li>{{ t[1] }}</li> <p><a href="{{ url_for('delete',id_task=t[0]) }}">Delete</a> </p>
     {% endfor %}
   </ul>
+
+<form action="{{ url_for('new_task') }}" method="post"> <!form specifies how the form is sent to the server [POST] and 'action' is the name of the page called when submitting the form>
+  <p>Insert a new Task:
+      <input type="text" name="task"/> <!insert the user name>
+      <input type="submit" class="btn btn-primary" value="Enter"/>
+  </p>
+</form>
+
 </body>
 </html>
